@@ -1,0 +1,15 @@
+header
+{
+    position: fixed;
+    display: flex;
+    align-items: center;
+    color:#ebae1c;
+    background: #5F8868;
+    width: 100vw;
+    
+}
+.header_logo
+{
+    height: 55px;
+    margin-left: 25px;
+}
