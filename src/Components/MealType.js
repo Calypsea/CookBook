@@ -1,9 +1,6 @@
 
 export default function MealType(props){
     const styles = {
-        // background: props.chosen && "#f3d58f" ,
-        // border: props.chosen && "5px solid #f3d58f"
-        
         background: props.chosen && "#a7e5b5" ,
         border: props.chosen && "5px solid #a7e5b5"
     }
