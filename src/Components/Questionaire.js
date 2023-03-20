@@ -69,6 +69,11 @@ export default function Questionaire(){
         setFormRender(false);
         setFinal(true);
     }
+
+    const styleButton = {
+        background: formRender && "#5F8868",
+        color: formRender && "white"
+    }
     //form data
     const [ingredientsData, setIngredientsData] = React.useState({
         first: "",
@@ -159,7 +164,7 @@ export default function Questionaire(){
             </div>
             <h1 className="questionaire_title"> Do you have preferred ingredients?  </h1>
             <div className="questionaire_buttons">
-                <button className="main_button questionaire_button" onClick={renderFormTrue}>Yes</button>
+                <button className="main_button questionaire_button" onClick={renderFormTrue} style={styleButton}>Yes</button>
                 <button className="main_button questionaire_button"onClick={renderFormFalse}>No</button>
             </div>
             {/*render only if clicked 'Yes' above ^*/}

@@ -39,10 +39,10 @@ main
 {
     font-size: 1.2rem;
     padding: 1rem 1rem;
-    border-radius:8px;
+    border-radius:45px;
     border: 0px;
     background: #ebae1c;
-   
+    box-shadow: 5px 10px #3f56447b;
     cursor: pointer;
     margin-top: 45px;
     color: black;
