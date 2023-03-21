@@ -10,6 +10,7 @@ function Popup(props) {
             <img className='close_btn' onClick={props.exit} src={require("./images/backbtn.png")} alt="exit" />
             
 
+          
             {props.children}
         </div>
     </div>
