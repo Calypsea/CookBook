@@ -8,6 +8,7 @@ export default function Recipes(props){
     function triggerFunction(){
         setTrigger(prev => !prev);
     }
+    
     return(
         <div className="recipe">
             <img src={props.url} alt={props.name} className="recipe_img"/>

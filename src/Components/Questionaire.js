@@ -13,7 +13,6 @@ import cuisines from './quiz_data/cuisines'
 
 export default function Questionaire(){
 
-    
 
     //state for keeping data safe and updated
     const [meals, setMeals] = React.useState(mealtypes);

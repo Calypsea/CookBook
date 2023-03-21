@@ -22,6 +22,7 @@ function App() {
         startFunc={getStarted}
         display={displayMain}
       />
+      
       {start && <div className="body">
         <Questionaire />
       </div>}
