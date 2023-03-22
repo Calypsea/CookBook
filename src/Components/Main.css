@@ -1,10 +1,12 @@
 main
 {
     font-family: Jost;
+    
     font-size: 2rem;
     background: #5F8868;
     color: white;
     display: flex;
+    align-items: center;
     justify-content: center;
     padding: 10%  0 10%;
     
@@ -29,11 +31,17 @@ main
 }
 .main_content
 {
+    
     display: flex;
     flex-direction: row;
     max-width: 80%;
     gap: 50px;
     align-items: center;
+}
+.small_main
+{
+    text-align:center;
+    justify-content: center;
 }
 .main_button
 {

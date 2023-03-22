@@ -1,4 +1,5 @@
 import React from 'react';
+import Media from 'react-media';
 
 import './Questionaire.css'
 import './Main.css'
@@ -129,7 +130,7 @@ export default function Questionaire(){
             return threeIds;
         })
         .then(Ids => { //use ids to fetch the recipes
-            return fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${key2}&ids=${Ids}&includeNutrition=false`)
+            return fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${key}&ids=${Ids}&includeNutrition=false`)
         })
         .then(res => res.json())
         .then(data => {
@@ -168,12 +169,12 @@ export default function Questionaire(){
         }
         console.log(apiRecipes[0])
         
-        
-        
+               
     }
+   
     return(
         <div className="questionaire">
-             <h1 className="questionaire_title questionaire_top">Your preferences:</h1>
+             <h1 className="questionaire_title questionaire_top">Questionaire</h1>
             <h1 className="questionaire_title"> Please choose what type of restrictions do you have:  </h1>
             <div className="MealType_choices">
                 {MealTypeElements}
@@ -192,9 +193,21 @@ export default function Questionaire(){
             {formRender && <Ingredients onChange={handleChange}/>}
             {renderRecipes && <div className="recipe_output">
                 <h2>Your options for today:</h2>
-                <div className="recipes">
-                    {recipeElements}
-                </div>
+
+                <Media queries={{ small: { maxWidth: 768 } }}>
+                {matches =>
+                    matches.small ? (
+                        <div className="recipes small" >
+                        {recipeElements}
+                        </div>
+                    ) : (
+                        <div className="recipes" >
+                        {recipeElements}
+                        </div>
+                    )
+                }
+                </Media>
+
             </div>}
             {final && <div  className="findRecipes">
                 <button className='main_button findRecipes_button' onClick={handleRequest}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
