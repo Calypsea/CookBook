@@ -136,8 +136,15 @@ label
     border: 3px solid #5F8868;
     border-radius: 20px;
     color: #5F8868;
-    box-shadow: 5px 10px #3f56447b;
     
+    background: white;
+    
+    
+}
+.recipe:hover
+{
+    background: #e3f2e6;
+    box-shadow: 5px 10px #3f56447b;
 }
 .recipe_img
 {
@@ -158,4 +165,25 @@ label
 .reload_button
 {
     margin: 30px;
+}
+/* credits */
+.credits
+{
+    background: #4f6d55;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    font-weight: 400;
+}
+.credits p
+{
+    margin: 0;
+}
+.credits a + a
+{
+    margin-left: 10px;
+}
+.credits a
+{
+    color: white;
 }

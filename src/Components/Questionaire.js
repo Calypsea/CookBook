@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Questionaire.css'
 import './Main.css'
 
@@ -59,6 +60,8 @@ export default function Questionaire(){
 
     const [formRender, setFormRender] = React.useState(false);
     const [final, setFinal] = React.useState(false);
+
+    
     
     function renderFormTrue(){ 
         setFormRender(true);
@@ -95,7 +98,7 @@ export default function Questionaire(){
     
     
     const [apiRecipes, setApiRecipes] = React.useState('');
-    const [apiIngredients, setApiIngredients] = React.useState('');
+    
 
     // this filters the data from states by which was chosen(clicked on) and 
     //maps it into an array that contains values of those elements.
@@ -117,7 +120,7 @@ export default function Questionaire(){
          .then( res => res.json())
          .then(data => {
             
-            //grab 3 meal ids from the data received and strigify them
+            //grab 3 meal ids from the data received and strngify them
             for(let i = 0; i < 3; i++) 
             {
                 threeRecipes.push(data.results[i].id);
@@ -140,12 +143,8 @@ export default function Questionaire(){
 
     let recipeElements = [];
     
-    
-    
     if(renderRecipes) //check if code contacted api already
     {
-        
-       
         let ingredientArray = [];
         for(let i = 0; i < 3; i++)
         {
@@ -163,8 +162,13 @@ export default function Questionaire(){
                 name={apiRecipes[i].title} 
                 url={apiRecipes[i].image}
                 description={apiRecipes[i].instructions} 
+                ingredients={ingredientArray[i]}
+                
         />) //if it did, push 3 recipe elements into an array and print it in line 170
         }
+        console.log(apiRecipes[0])
+        
+        
         
     }
     return(
@@ -181,7 +185,7 @@ export default function Questionaire(){
             </div>
             <h1 className="questionaire_title"> Do you have preferred ingredients?  </h1>
             <div className="questionaire_buttons">
-                <button className="main_button questionaire_button" onClick={renderFormTrue} style={styleButton}>Yes</button>
+                <button className="main_button questionaire_button"  onClick={renderFormTrue} style={styleButton}>Yes</button>
                 <button className="main_button questionaire_button"onClick={renderFormFalse}>No</button>
             </div>
             {/*render only if clicked 'Yes' above ^*/}
@@ -192,12 +196,20 @@ export default function Questionaire(){
                     {recipeElements}
                 </div>
             </div>}
-            {final && <div className="findRecipes">
+            {final && <div  className="findRecipes">
                 <button className='main_button findRecipes_button' onClick={handleRequest}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
                 {renderRecipes && <button className='main_button reload_button' onClick={() => window.location.reload(false)}>Restart the questionaire</button>}
+
+                
             </div>}
             
-           
+            { final && <div className="credits">
+                <p>© Austėja Kazlauskaitė</p>
+                <a href="https://github.com/Calypsea/CookBook">Github</a>
+                <a href="https://www.linkedin.com/in/aust%C4%97ja-kazlauskait%C4%97-550368252/">LinkedIn</a>
+                <p>2023</p>
+                
+                </div>}
 
         </div>
     )

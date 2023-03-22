@@ -1,1 +1,20 @@
-
+.credits
+{
+    background: #4f6d55;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    
+}
+.credits p
+{
+    margin: 0;
+}
+.credits a + a
+{
+    margin-left: 10px;
+}
+.credits a
+{
+    color: white;
+}

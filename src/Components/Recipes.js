@@ -14,15 +14,16 @@ export default function Recipes(props){
             <img src={props.url} alt={props.name} className="recipe_img"/>
             <h2 className="recipe_title">{props.name}</h2>
             
-            {/* //grab ingredients somehow from the damn api and display those with ^^ */}
             <button className="main_button recipe_button" onClick={triggerFunction}>Show recipe</button>
             <Popup 
                 trigger={trigger}
                 exit={triggerFunction}
                 description={props.description}
+                ingredients={props.ingredients}
+                
             >
                 <h2>{props.name}</h2>
-                <h3>Recipe:</h3>
+                
             </Popup>
         </div>
     )

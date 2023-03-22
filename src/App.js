@@ -25,7 +25,10 @@ function App() {
       
       {start && <div className="body">
         <Questionaire />
+        
+        
       </div>}
+      
      
     </div>
   );
