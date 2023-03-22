@@ -42,6 +42,10 @@ main
 {
     text-align:center;
     justify-content: center;
+    font-size: 1.8rem;
+    padding-top: 50px;
+    max-width: 100%;
+    
 }
 .main_button
 {
