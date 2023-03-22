@@ -27,8 +27,6 @@
     position: relative;
     height: 35px;
     border-radius: 45px;
-    
-    
 }
 .close_btn:hover
 {
@@ -40,7 +38,6 @@
     width: 80%;
     text-align: justify;
     font-weight: 400;
-    
     padding-bottom: 30px;
 }
 li
