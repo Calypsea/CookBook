@@ -20,7 +20,6 @@ export default function Recipes(props){
                 exit={triggerFunction}
                 description={props.description}
                 ingredients={props.ingredients}
-                
             >
                 <h2>{props.name}</h2>
                 
