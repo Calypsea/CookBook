@@ -41,7 +41,7 @@ main
     padding: 1rem 1rem;
     border-radius:45px;
     border: 0px;
-    background: #ebae1c;
+    background: #eccc82;
     box-shadow: 5px 10px #3f56447b;
     cursor: pointer;
     margin-top: 45px;
@@ -52,7 +52,7 @@ main
 .main_button:hover
 {
     color: white;
-    background: #f3c865;
+    background: #ebae1c;
 }
 .main_title
 {

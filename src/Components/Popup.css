@@ -33,3 +33,9 @@
     background: rgb(210, 227, 210);
     cursor: pointer;
 }
+.recipe_instructions
+{
+    width: 80%;
+    text-align: justify;
+    font-weight: 400;
+}

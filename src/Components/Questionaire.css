@@ -39,7 +39,6 @@
 }
 .questionaire_button
 {
-    
     border: 3px solid #5F8868;
     background:white;
     color:#5F8868;
@@ -48,7 +47,6 @@
 .questionaire_button:hover
 {
     color: white;
-    
     background: #5F8868;
 }
 .Meal_Component_Img
@@ -156,4 +154,8 @@ label
     box-shadow: 5px 10px #3f56447b;
     background: #eccc82;
     color:#213025;
+}
+.reload_button
+{
+    margin: 30px;
 }

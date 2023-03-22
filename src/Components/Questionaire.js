@@ -63,6 +63,7 @@ export default function Questionaire(){
     function renderFormTrue(){ 
         setFormRender(true);
         setFinal(true);
+        
     }
     function renderFormFalse(){ 
         setFormRender(false);
@@ -94,6 +95,7 @@ export default function Questionaire(){
     
     
     const [apiRecipes, setApiRecipes] = React.useState('');
+    const [apiIngredients, setApiIngredients] = React.useState('');
 
     // this filters the data from states by which was chosen(clicked on) and 
     //maps it into an array that contains values of those elements.
@@ -132,15 +134,30 @@ export default function Questionaire(){
             setRenderRecipes(true)
             
         })
+        
         //only set render boolean to true AFTER the apirecipe state is filled with information.  
     }
 
     let recipeElements = [];
+    
+    
+    
     if(renderRecipes) //check if code contacted api already
     {
-        console.log(apiRecipes[0].instructions)
+        
+       
+        let ingredientArray = [];
         for(let i = 0; i < 3; i++)
         {
+            let arr = [];
+            for(let j = 0; j < apiRecipes[i].extendedIngredients.length; j++)
+            {
+                arr.push(apiRecipes[i].extendedIngredients[j].original)
+            }
+            ingredientArray.push(arr);
+            //this thing creates an array for each of the meal ingredients and later puts all arrays
+            //into one.
+            //
             recipeElements.push(<Recipes
                 key={apiRecipes[i].id} 
                 name={apiRecipes[i].title} 
@@ -148,6 +165,7 @@ export default function Questionaire(){
                 description={apiRecipes[i].instructions} 
         />) //if it did, push 3 recipe elements into an array and print it in line 170
         }
+        
     }
     return(
         <div className="questionaire">
@@ -168,15 +186,17 @@ export default function Questionaire(){
             </div>
             {/*render only if clicked 'Yes' above ^*/}
             {formRender && <Ingredients onChange={handleChange}/>}
-            {final && <div className="findRecipes">
-                <button className='main_button findRecipes_button' onClick={handleRequest}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
-            </div>}
             {renderRecipes && <div className="recipe_output">
                 <h2>Your options for today:</h2>
                 <div className="recipes">
                     {recipeElements}
                 </div>
             </div>}
+            {final && <div className="findRecipes">
+                <button className='main_button findRecipes_button' onClick={handleRequest}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
+                {renderRecipes && <button className='main_button reload_button' onClick={() => window.location.reload(false)}>Restart the questionaire</button>}
+            </div>}
+            
            
 
         </div>
