@@ -2,7 +2,7 @@
   "name": "my-cook",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Calypsea.github.io/CookBook",
+  "homepage": "http://Calypsea.github.io/CookBook",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.3.0",
     "@fortawesome/free-regular-svg-icons": "^6.3.0",
