@@ -119,6 +119,7 @@ label
 {
     padding: 20px 0 100px;
     background:#5F8868;
+    margin-top: 50px;
     
 }
 /*Recipes */
@@ -136,15 +137,13 @@ label
 {
     
     width: 300px;
-    
     text-align:left;
     padding: 20px;
-    margin: 80px 20px;
+    margin: 30px 20px;
     background:rgba(255, 255, 255, 0.823);
     border: 3px solid #5F8868;
     border-radius: 20px;
     color: #5F8868;
-    
     background: white;
     
     
