@@ -11,19 +11,8 @@ function Popup(props) {
       <li>{item}</li>
     )
   })
+  //printing recipe ingredients as a list
   return (props.trigger) ? (
-    // <div className="popup">
-    //     <div className="popup-inner">
-    //         <img className='close_btn' onClick={props.exit} src={require("./images/backbtn.png")} alt="exit" />
-    //         {props.children}
-    //         <h3>Ingredients:</h3>
-    //         {ingredientElements}
-    //         <h3>Recipe:</h3>
-    //         <div dangerouslySetInnerHTML={{ __html: props.description }} className="recipe_instructions" />
-          
-            
-    //     </div>
-    // </div>
     <Media queries={{ small: { maxWidth: 768 } }}>
       {matches =>
           matches.small ? (
@@ -34,9 +23,7 @@ function Popup(props) {
                   <h3>Ingredients:</h3>
                   {ingredientElements}
                   <h3>Recipe:</h3>
-                  <div dangerouslySetInnerHTML={{ __html: props.description }} className="recipe_instructions" />
-                
-                    
+                  <div dangerouslySetInnerHTML={{ __html: props.description }} className="recipe_instructions" />   
                 </div>
             </div>
           ) : (
@@ -47,9 +34,7 @@ function Popup(props) {
                 <h3>Ingredients:</h3>
                 {ingredientElements}
                 <h3>Recipe:</h3>
-                <div dangerouslySetInnerHTML={{ __html: props.description }} className="recipe_instructions" />
-              
-                  
+                <div dangerouslySetInnerHTML={{ __html: props.description }} className="recipe_instructions" />        
               </div>
             </div>
           )

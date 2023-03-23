@@ -16,8 +16,6 @@ import LoadingSpinner from "./Spinner";
 
 
 export default function Questionaire(){
-
-
     //state for keeping data safe and updated
     const [meals, setMeals] = React.useState(mealtypes);
     const [cuis, setCuis] = React.useState(cuisines);
@@ -26,7 +24,6 @@ export default function Questionaire(){
     //v if clicked, chosen prop turns 'true' so can be incorporated later v
     function dietValue(value, type)
     {
-        // let diet = `diet=${value}`;
         type(prev =>{
            return prev.map(item => {
             return value === item.value ? {...item, chosen: !item.chosen} : item
@@ -34,7 +31,6 @@ export default function Questionaire(){
         });
     }
     //v creates cuisine and diet elements by mapping over object arrays v
-    //try to put in one maybe?
     let MealTypeElements = meals.map(item => {
         return(
             <MealType
@@ -64,8 +60,6 @@ export default function Questionaire(){
     const [formRender, setFormRender] = React.useState(false);
     const [final, setFinal] = React.useState(false);
 
-    
-    
     function renderFormTrue(){ 
         setFormRender(true);
         setFinal(true);
@@ -98,21 +92,18 @@ export default function Questionaire(){
     }
     //final function call to contact api and get info back
    
-    
-    
     const [apiRecipes, setApiRecipes] = React.useState('');
     
-
     // this filters the data from states by which was chosen(clicked on) and 
     //maps it into an array that contains values of those elements.
     //then i join the array into string that will later feed into an api call
     let typeOfMeals = meals.filter(item => item.chosen === true).map(item => item.value).join();
     let typeOfCuisine = cuis.filter(item => item.chosen === true).map(item => item.value).join();
-    //!!figure out how to grab data from forms in nice format
     
+    //
     const [renderRecipes, setRenderRecipes] = React.useState(false);
 
-    const [isLoading, setIsLoading] = React.useState(false); // tracking loading
+    const [isLoading, setIsLoading] = React.useState(false); // tracking loading 
     const [errorMessage, setErrorMessage] = React.useState(""); //catching errors
     
     
@@ -127,7 +118,7 @@ export default function Questionaire(){
          fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&number=20&sort=random&includeIngredients=${first},${second},${third}&diet=${typeOfMeals}&cuisine=${typeOfCuisine}`)
          .then( res => res.json())
          .then(data => {
-            //grab 3 meal ids from the data received and strngify them
+            //grab 3 meal ids from the data received and stringify them
             for(let i = 0; i < 3; i++) 
             {
                 threeRecipes.push(data.results[i].id);
@@ -139,10 +130,10 @@ export default function Questionaire(){
             return fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${key2}&ids=${Ids}&includeNutrition=false`)
         })
         .then(res => res.json())
-        .then(data => {
+        .then(data => { //set recipe statewith received data, allow to render elements with this data
             setApiRecipes(data)
             setRenderRecipes(true)
-            setIsLoading(false)
+            setIsLoading(false) //loading button stops
             setErrorMessage("")
         })
         .catch(() => {
@@ -178,9 +169,6 @@ export default function Questionaire(){
                 
         />) //if it did, push 3 recipe elements into an array and print it in line 170
         }
-        
-        
-        
                
     }
    
