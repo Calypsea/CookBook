@@ -194,4 +194,11 @@ label
 {
     color: white;
 }
+.error
+{
+    font-size: 1.2rem;
+    color: red;
+    max-width: 400px;
+    margin: 0 auto;
+}
 

@@ -12,6 +12,8 @@ import Recipes from './Recipes';
 import mealtypes from './quiz_data/mealtypes'
 import cuisines from './quiz_data/cuisines'
 
+import LoadingSpinner from "./Spinner";
+
 
 export default function Questionaire(){
 
@@ -109,9 +111,13 @@ export default function Questionaire(){
     //!!figure out how to grab data from forms in nice format
     
     const [renderRecipes, setRenderRecipes] = React.useState(false);
+
+    const [isLoading, setIsLoading] = React.useState(false); // tracking loading
+    const [errorMessage, setErrorMessage] = React.useState(""); //catching errors
     
     function handleRequest(){ 
         
+        setIsLoading(true); //start loading animation
         let key = "7bf0253399f2488f818693d6dc510629";
         let key2 = "2b81a9ca9d59453ca8cb7a51847d8c11";
         //keys from SpoonacularAPI
@@ -130,13 +136,19 @@ export default function Questionaire(){
             return threeIds;
         })
         .then(Ids => { //use ids to fetch the recipes
-            return fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${key}&ids=${Ids}&includeNutrition=false`)
+            return fetch(`https://api.spoonacular.com/recipes/informationBulk?apiKey=${key2}&ids=${Ids}&includeNutrition=false`)
         })
         .then(res => res.json())
         .then(data => {
             setApiRecipes(data)
             setRenderRecipes(true)
-            
+            setIsLoading(false)
+            setErrorMessage("")
+        })
+        .catch(() => {
+            setErrorMessage("Unable to fetch recipe data. Please choose a different combination.");
+            setIsLoading(false)
+            setRenderRecipes(false)
         })
         
         //only set render boolean to true AFTER the apirecipe state is filled with information.  
@@ -191,18 +203,20 @@ export default function Questionaire(){
             </div>
             {/*render only if clicked 'Yes' above ^*/}
             {formRender && <Ingredients onChange={handleChange}/>}
+            {errorMessage ? <div className="error">{errorMessage}</div> : ""}
             {renderRecipes && <div className="recipe_output">
                 <h2>Your options for today:</h2>
-
+                
                 <Media queries={{ small: { maxWidth: 768 } }}>
                 {matches =>
                     matches.small ? (
                         <div className="recipes small" >
-                        {recipeElements}
+                        {isLoading ? <LoadingSpinner /> : recipeElements}
                         </div>
                     ) : (
                         <div className="recipes" >
-                        {recipeElements}
+                        {isLoading ? <LoadingSpinner /> : recipeElements}
+                        
                         </div>
                     )
                 }
@@ -210,7 +224,7 @@ export default function Questionaire(){
 
             </div>}
             {final && <div  className="findRecipes">
-                <button className='main_button findRecipes_button' onClick={handleRequest}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
+                <button className='main_button findRecipes_button' onClick={handleRequest} disabled={isLoading}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
                 {renderRecipes && <button className='main_button reload_button' onClick={() => window.location.reload(false)}>Restart the questionaire</button>}
 
                 
