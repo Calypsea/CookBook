@@ -115,6 +115,7 @@ export default function Questionaire(){
     const [isLoading, setIsLoading] = React.useState(false); // tracking loading
     const [errorMessage, setErrorMessage] = React.useState(""); //catching errors
     
+    
     function handleRequest(){ 
         
         setIsLoading(true); //start loading animation
@@ -126,7 +127,6 @@ export default function Questionaire(){
          fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${key}&number=20&sort=random&includeIngredients=${first},${second},${third}&diet=${typeOfMeals}&cuisine=${typeOfCuisine}`)
          .then( res => res.json())
          .then(data => {
-            
             //grab 3 meal ids from the data received and strngify them
             for(let i = 0; i < 3; i++) 
             {
@@ -150,7 +150,6 @@ export default function Questionaire(){
             setIsLoading(false)
             setRenderRecipes(false)
         })
-        
         //only set render boolean to true AFTER the apirecipe state is filled with information.  
     }
 
@@ -179,7 +178,8 @@ export default function Questionaire(){
                 
         />) //if it did, push 3 recipe elements into an array and print it in line 170
         }
-        console.log(apiRecipes[0])
+        
+        
         
                
     }
@@ -210,7 +210,7 @@ export default function Questionaire(){
                 <Media queries={{ small: { maxWidth: 768 } }}>
                 {matches =>
                     matches.small ? (
-                        <div className="recipes small" >
+                        <div className="recipes small"  >
                         {isLoading ? <LoadingSpinner /> : recipeElements}
                         </div>
                     ) : (
