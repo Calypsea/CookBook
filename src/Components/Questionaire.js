@@ -104,6 +104,7 @@ export default function Questionaire(){
     const [renderRecipes, setRenderRecipes] = React.useState(false);
 
     const [isLoading, setIsLoading] = React.useState(false); // tracking loading 
+    const [loadCount, setLoadCount] = React.useState(0);
     const [errorMessage, setErrorMessage] = React.useState(""); //catching errors
     
     
@@ -135,6 +136,7 @@ export default function Questionaire(){
             setRenderRecipes(true)
             setIsLoading(false) //loading button stops
             setErrorMessage("")
+            setLoadCount(prev => prev + 1)
         })
         .catch(() => {
             setErrorMessage("Unable to fetch recipe data. Please choose a different combination.");
@@ -192,7 +194,8 @@ export default function Questionaire(){
             {/*render only if clicked 'Yes' above ^*/}
             {formRender && <Ingredients onChange={handleChange}/>}
             {errorMessage ? <div className="error">{errorMessage}</div> : ""}
-            {renderRecipes && <div className="recipe_output">
+            {isLoading && loadCount < 1 ? <LoadingSpinner /> : ''}
+            {renderRecipes ? <div className="recipe_output">
                 <h2>Your options for today:</h2>
                 
                 <Media queries={{ small: { maxWidth: 768 } }}>
@@ -210,7 +213,7 @@ export default function Questionaire(){
                 }
                 </Media>
 
-            </div>}
+            </div> : <div className="recipe_output"></div>}
             {final && <div  className="findRecipes">
                 <button className='main_button findRecipes_button' onClick={handleRequest} disabled={isLoading}>{!renderRecipes ? `Find recipes!` : `Try again?`}</button>
                 {renderRecipes && <button className='main_button reload_button' onClick={() => window.location.reload(false)}>Restart the questionaire</button>}
