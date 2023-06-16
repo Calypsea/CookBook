@@ -11,7 +11,7 @@ export default function Recipes(props){
     
     return(
         <div className="recipe" >
-            <img src={props.url} alt={props.name} className="recipe_img"/>
+            <img src={props.url} alt={props.name} className="recipe_img"/> 
             <h2 className="recipe_title">{props.name}</h2>
             
             <button className="main_button recipe_button" onClick={triggerFunction}>Show recipe</button>

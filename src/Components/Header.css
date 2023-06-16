@@ -6,6 +6,8 @@ header
     color:#ebae1c;
     background: #5F8868;
     width: 100vw;
+    padding-top: 4px;
+    padding-bottom: 4px;
     
 }
 .header_logo
@@ -13,4 +15,12 @@ header
     height: 55px;
     margin-left: 25px;
     image-resolution:72dpi;
+}
+header a
+{
+    all:unset;
+    cursor:pointer;
+    font-size: 1.675rem;
+    font-weight: bold;
+    line-height: 1.067rem;
 }
