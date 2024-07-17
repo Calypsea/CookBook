@@ -61,10 +61,25 @@ export default function Questionaire() {
   function renderFormTrue() {
     setFormRender(true);
     setFinal(true);
+    window.scrollTo({
+      top: 800,
+      behavior: "smooth",
+    });
+
   }
   function renderFormFalse() {
     setFormRender(false);
     setFinal(true);
+    window.scrollTo({
+      top: 800,
+      behavior: "smooth",
+    });
+
+  }
+
+  function aaa()
+  {
+    window.scrollTo(0, 800);
   }
 
   const styleButton = {
@@ -143,6 +158,10 @@ export default function Questionaire() {
         setIsLoading(false); //loading button stops
         setErrorMessage("");
         setLoadCount((prev) => prev + 1);
+        window.scrollTo({
+          top: 800,
+          behavior: "smooth",
+        });
       })
       .catch(() => {
         setErrorMessage(
@@ -150,6 +169,8 @@ export default function Questionaire() {
         );
         setIsLoading(false);
         setRenderRecipes(false);
+        
+
       });
     //only set render boolean to true AFTER the apirecipe state is filled with information.
   }
@@ -262,7 +283,9 @@ export default function Questionaire() {
           <a href="https://www.linkedin.com/in/aust%C4%97ja-kazlauskait%C4%97-550368252/">
             LinkedIn
           </a>
-          <p>2023</p>
+          {/* <p>2023</p> */}
+          <button onClick={aaa}>aaa</button>
+
         </div>
       )}
     </div>
